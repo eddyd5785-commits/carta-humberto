@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Humberto ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.pantalla {
+    margin-top: 120px;
+}
+
+button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+img {
+    width: 250px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.heart {
+    position: fixed;
+    color: red;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10px); }
+    100% { transform: translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Música Kenia Os -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/p9_OfhaG8I0?autoplay=1&loop=1&playlist=p9_OfhaG8I0"
+frameborder="0"
+allow="autoplay">
+</iframe>
+
+<!-- Pantalla 1 -->
+<div id="pantalla1" class="pantalla">
+<h1>Hola Humberto ❤️</h1>
+<p>Tengo algo especial para ti 🥹</p>
+<button onclick="pantalla2()">Abrir sorpresa</button>
+</div>
+
+<!-- Pantalla 2 -->
+<div id="pantalla2" class="pantalla" style="display:none;">
+<h1>Esta canción me recuerda a nosotros 🎵</h1>
+<p>Tú y yo x siempre 💕</p>
+<button onclick="pantalla3()">Continuar</button>
+</div>
+
+<!-- Pantalla 3 -->
+<div id="pantalla3" class="pantalla" style="display:none;">
+<h1>Nuestro recuerdo 📸</h1>
+<img src="foto.jpg" width="250">
+<p>Eres muy importante para mí ❤️</p>
+<button onclick="pantalla4()">Ver tiempo juntos</button>
+</div>
+
+<!-- Pantalla 4 -->
+<div id="pantalla4" class="pantalla" style="display:none;">
+<h1>Tiempo juntos ⏳</h1>
+<p id="contador"></p>
+<button onclick="pantalla5()">Continuar</button>
+</div>
+
+<!-- Pantalla 5 -->
+<div id="pantalla5" class="pantalla" style="display:none;">
+<h1>Humberto 🥹</h1>
+<p>¿Me amas?</p>
+<button onclick="respuesta()">Sí ❤️</button>
+<button onclick="mover(this)">No 😅</button>
+</div>
+
+<!-- Pantalla final -->
+<div id="pantalla6" class="pantalla" style="display:none;">
+<h1>Para Humberto ❤️</h1>
+<p>Gracias por estar en mi vida.</p>
+<p>Desde el 4 de marzo de 2024 todo es más bonito.</p>
+<p>Te amo mucho 💕</p>
+<p>Nunca olvides lo especial que eres para mí 🥹</p>
+</div>
+
+<script>
+
+function pantalla2(){
+document.getElementById("pantalla1").style.display="none";
+document.getElementById("pantalla2").style.display="block";
+}
+
+function pantalla3(){
+document.getElementById("pantalla2").style.display="none";
+document.getElementById("pantalla3").style.display="block";
+}
+
+function pantalla4(){
+document.getElementById("pantalla3").style.display="none";
+document.getElementById("pantalla4").style.display="block";
+}
+
+function pantalla5(){
+document.getElementById("pantalla4").style.display="none";
+document.getElementById("pantalla5").style.display="block";
+}
+
+function respuesta(){
+document.getElementById("pantalla5").style.display="none";
+document.getElementById("pantalla6").style.display="block";
+corazones();
+}
+
+function mover(boton){
+    boton.style.position = "absolute";
+    boton.style.left = Math.random() * 80 + "%";
+    boton.style.top = Math.random() * 80 + "%";
+}
+
+
+function corazones(){
+setInterval(()=>{
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=Math.random()*20+20+"px";
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+},300);
+}
+
+
+/ contador /
+
+const fechaInicio = new Date(2024, 2, 4);
+
+setInterval(() => {
+
+const hoy = new Date();
+const diferencia = hoy - fechaInicio;
+
+const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+
+document.getElementById("contador").innerHTML =
+"Llevamos juntos " + dias + " días, " + horas + " horas y " + minutos + " minutos ❤️";
+
+}, 1000);
+
+
+</script>
+
+</body>
+</html>
